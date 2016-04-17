@@ -5,6 +5,7 @@ import xbmcgui
 import xbmcaddon
 import xbmcvfs
 import unicodedata
+from json import loads
 
 __addon__ = xbmcaddon.Addon()
 __scriptname__ = __addon__.getAddonInfo('name')

@@ -1,7 +1,4 @@
-import xbmc
-import xbmcaddon
-from json import loads
-from lib import kodi
+import kodi
 
 class Setting:
     def __init__(self):
