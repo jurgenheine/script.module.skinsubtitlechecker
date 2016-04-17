@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.skinsubtitlechecker" name="Skin Subtittle checker module" version="0.1" provider-name="j.heine">
+  <requires>
+    <import addon="xbmc.python" version="2.20.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <language/>
+    <summary lang="en">Module for skin subtitle checker</summary>
+    <description lang="en">
+      Module for skin subtitle checker
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
