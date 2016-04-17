@@ -29,6 +29,21 @@ ENGLISH_NAME =xbmc.ENGLISH_NAME
 def get_version():
     return __version__
 
+def get_params(args, index):
+    param = {}
+    if len(args) > index:
+        log(__name__, "params: %s" % args[index])
+        paramstring = args[index]
+        if len(paramstring) >= 2:
+            params = paramstring
+            cleanedparams = params.replace('?', '')
+            pairsofparams = cleanedparams.split('&')
+            param = {}
+            for i in range(len(pairsofparams)):
+                splitparams = pairsofparams[i].split('=')
+                if (len(splitparams)) == 2:
+                    param[splitparams[0]] = splitparams[1]
+    return param
 
 def log(module, msg, level=xbmc.LOGDEBUG):
     try:
