@@ -156,7 +156,7 @@ def get_kodi_setting(name):
         result = execute_json_rpc(command % name)
         py = loads(result)
         if 'result' in py and 'value' in py['result']:
-            sublang = py['result']['value']
+            return py['result']['value']
         else:
             log(__scriptname__,"Could not load Subtitle language with Json-RPC, use current kodi language",LOGWARNING)
             return get_interface_language() 
