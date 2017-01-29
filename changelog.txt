@@ -1,3 +1,6 @@
+v0.3
+Add kodi version check, needed for v17 Krypton changes
+
 v0.2
 Bug fixes
 Support for notifications

@@ -29,6 +29,9 @@ ENGLISH_NAME =xbmc.ENGLISH_NAME
 def get_version():
     return __version__
 
+def get_kodi_version():
+    return int(xbmc.getInfoLabel("System.BuildVersion").split(".")[0])
+
 def get_params(args, index):
     param = {}
     if len(args) > index:
@@ -153,9 +156,13 @@ def get_kodi_setting(name):
         result = execute_json_rpc(command % name)
         py = loads(result)
         if 'result' in py and 'value' in py['result']:
-            return py['result']['value']
+            sublang = py['result']['value']
         else:
-            return None
+            log(__scriptname__,"Could not load Subtitle language with Json-RPC, use current kodi language",LOGWARNING)
+            return get_interface_language() 
+
+def get_interface_language():
+    return xbmc.getLanguage() 
 
 def get_localized_string(id):
     return __addon__.getLocalizedString(id)
