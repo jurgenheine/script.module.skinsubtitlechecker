@@ -1,5 +1,11 @@
-import skinsubtitlekodi as kodi
+import xbmcaddon
+import xbmc
+
+from skinsubtitlekodi import get_kodi_setting
 from skinsubtitlenotificationmethod import NotificationMethod
+
+__addon__ = xbmcaddon.Addon()
+__cwd__ = xbmc.translatePath(__addon__.getAddonInfo('path'))
 
 class Setting:
     def __init__(self):
@@ -12,7 +18,7 @@ class Setting:
         pass       
 
     def get_setting(self, name):
-        return kodi.__addon__.getSetting(name)
+        return __addon__.getSetting(name)
 
     def get_cache_not_found_timeout(self):
         cachetimenotfound = self.get_setting("CacheTimeNotFound")
@@ -59,9 +65,9 @@ class Setting:
         return 1000 * float(duration)
 
     def get_script_path(self):
-        return kodi.__cwd__
+        return __cwd__
 
     def get_kodi_setting(self, name):
-        return kodi.get_kodi_setting(name)
+        return get_kodi_setting(name)
 
     

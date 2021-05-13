@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import skinsubtitlekodi as kodi
+from skinsubtitlekodi import convert_language,ISO_639_2,ENGLISH_NAME
 from skinsubtitlesetting import Setting
  
 class LanguageHelper:
@@ -13,13 +13,13 @@ class LanguageHelper:
     def get_ISO_639_2(self, language):
         isocode = self.__get_translationIso(language)
         if(isocode == None):
-            return kodi.convert_language(language, kodi.ISO_639_2)
+            return convert_language(language, ISO_639_2)
         return isocode
 
     def get_english_name(self, iso_639_2_code):
         language = self.__get_translationLanguage(iso_639_2_code)
         if(language == None):
-            return kodi.convert_language(iso_639_2_code, kodi.ENGLISH_NAME)
+            return convert_language(iso_639_2_code, ENGLISH_NAME)
         return language
 
     def get_podnapisi_code(self,iso_639_2_code):
@@ -148,10 +148,10 @@ class LanguageHelper:
     ("Slovak"                     , "37",       "sk",            "slo",                 "37",                    30238  ),
     ("Slovenian"                  , "1",        "sl",            "slv",                 "38",                    30239  ),
     ("Spanish"                    , "28",       "es",            "spa",                 "39",                    30240  ),
-    ("Español (Latinoamérica)"    , "28",       "es",            "spa",                 "39",                    30240  ),
-    ("Español (España)"           , "28",       "es",            "spa",                 "39",                    30240  ),
+    ("Espa?ol (Latinoam?rica)"    , "28",       "es",            "spa",                 "39",                    30240  ),
+    ("Espa?ol (Espa?a)"           , "28",       "es",            "spa",                 "39",                    30240  ),
     ("Spanish (Latin America)"    , "28",       "es",            "spa",                 "39",                    30240  ),
-    ("Español"                    , "28",       "es",            "spa",                 "39",                    30240  ),
+    ("Espa?ol"                    , "28",       "es",            "spa",                 "39",                    30240  ),
     ("Spanish (Spain)"            , "28",       "es",            "spa",                 "39",                    30240  ),
     ("Swedish"                    , "25",       "sv",            "swe",                 "40",                    30242  ),
     ("Thai"                       , "0",        "th",            "tha",                 "41",                    30243  ),

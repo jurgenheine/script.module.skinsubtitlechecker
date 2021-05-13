@@ -10,7 +10,7 @@ from json import loads
 __addon__ = xbmcaddon.Addon()
 __scriptname__ = __addon__.getAddonInfo('name')
 __version__ = __addon__.getAddonInfo('version')
-__cwd__ = xbmc.translatePath(__addon__.getAddonInfo('path')).decode("utf-8")
+__cwd__ = xbmc.translatePath(__addon__.getAddonInfo('path'))
 __monitor__ = xbmc.Monitor()
 
 LOGDEBUG = xbmc.LOGDEBUG
@@ -18,8 +18,8 @@ LOGERROR = xbmc.LOGERROR
 LOGFATAL = xbmc.LOGFATAL
 LOGINFO = xbmc.LOGINFO
 LOGNONE = xbmc.LOGNONE
-LOGNOTICE = xbmc.LOGNOTICE
-LOGSEVERE = xbmc.LOGSEVERE
+LOGNOTICE = xbmc.LOGINFO
+LOGSEVERE = xbmc.LOGFATAL
 LOGWARNING = xbmc.LOGWARNING
 ISO_639_1 =xbmc.ISO_639_1
 ISO_639_2 =xbmc.ISO_639_2
@@ -63,13 +63,11 @@ def log(module, msg, level=xbmc.LOGDEBUG):
 
 
 def normalize_string(stri):
-    return unicodedata.normalize(
-         'NFKD', unicode(unicode(stri, 'utf-8'))
-         ).encode('ascii', 'ignore')
+    return unicodedata.normalize('NFKD', stri).encode('ascii', 'ignore').decode('ascii')
 
 
 def translate_path(path):
-    return xbmc.translatePath(path).decode('utf-8')
+    return xbmc.translatePath(path)
 
 
 def get_script_path():
@@ -178,9 +176,9 @@ def get_addons():
         result = execute_json_rpc(command)
         py = loads(result)
         addons=[]
-        for addonObj in json.loads(installedJson)[u'result'][u'addons']:
+        for addonObj in json.loads(installedJson)['result']['addons']:
             
-            id = addonObj[u'addonid'] 
+            id = addonObj['addonid'] 
             log(__name__,'check addon with id: ' + id,LOGDEBUG)
             if id.startswith('script.skinsubtitlechecker.provider'):
                 addons.append(id)

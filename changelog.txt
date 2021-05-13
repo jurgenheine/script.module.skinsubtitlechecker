@@ -1,3 +1,6 @@
+v0.5
+Matrix compatible
+
 v0.4
 Add Language module
 

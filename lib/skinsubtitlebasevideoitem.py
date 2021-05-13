@@ -1,4 +1,4 @@
-import skinsubtitlekodi as kodi
+from skinsubtitlekodi import normalize_string, get_clean_movie_title
 
 class BaseVideoItem:
     item =  None        
@@ -25,22 +25,21 @@ class BaseVideoItem:
         return querystring % (item['year'],item['season'],item['episode'],item['tvshow'],item['title'],item['filename'],searchlanguage)
 
     def create_item(self, year, season, episode, tvshow, originaltitle, title, filename,language_iso_639_2):
-        item = {'year': kodi.normalize_string(year),  # Year
-                'season': kodi.normalize_string(season),  # Season
-                'episode': kodi.normalize_string(episode),  # Episode
-                'tvshow': kodi.normalize_string(tvshow),
-                'title': kodi.normalize_string(originaltitle),  # try to get original title
-                'filename': kodi.normalize_string(filename),
+        item = {'year': normalize_string(year),  # Year
+                'season': normalize_string(season),  # Season
+                'episode': normalize_string(episode),  # Episode
+                'tvshow': normalize_string(tvshow),
+                'title': normalize_string(originaltitle),  # try to get original title
+                'filename': normalize_string(filename),
                 '3let_language': []}
 
         item['3let_language'].append(language_iso_639_2)
-#         kodi.log(__name__, "3let language: %s" % item['3let_language'])
         
         if item['title'] == "":
-            item['title'] = kodi.normalize_string(title)      # no original title, get just Title
+            item['title'] = normalize_string(title)      # no original title, get just Title
         
         if item['year'] == "":
-            item['title'], year = kodi.get_clean_movie_title(item['title'])
+            item['title'], year = get_clean_movie_title(item['title'])
             item['year'] = str(year)
                     
         if item['episode'].lower().find("s") > -1:  # Check if season is "Special"
