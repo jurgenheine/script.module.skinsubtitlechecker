@@ -50,9 +50,6 @@ def get_params(args, index):
 
 def log(module, msg, level=xbmc.LOGDEBUG):
     try:
-        if isinstance(msg, unicode):
-            msg = '%s (ENCODED)' % (msg.encode('utf-8'))
-
         xbmc.log('%s [%s]: %s' % (__scriptname__, module, msg), level)
     except Exception as e:
         # noinspection PyBroadException
