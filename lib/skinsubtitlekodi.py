@@ -10,7 +10,7 @@ from json import loads
 __addon__ = xbmcaddon.Addon()
 __scriptname__ = __addon__.getAddonInfo('name')
 __version__ = __addon__.getAddonInfo('version')
-__cwd__ = xbmc.translatePath(__addon__.getAddonInfo('path'))
+__cwd__ = xbmcvfs.translatePath(__addon__.getAddonInfo('path'))
 __monitor__ = xbmc.Monitor()
 
 LOGDEBUG = xbmc.LOGDEBUG
@@ -67,7 +67,7 @@ def normalize_string(stri):
 
 
 def translate_path(path):
-    return xbmc.translatePath(path)
+    return xbmcvfs.translatePath(path)
 
 
 def get_script_path():

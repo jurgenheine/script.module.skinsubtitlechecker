@@ -5,7 +5,7 @@ from skinsubtitlekodi import get_kodi_setting
 from skinsubtitlenotificationmethod import NotificationMethod
 
 __addon__ = xbmcaddon.Addon()
-__cwd__ = xbmc.translatePath(__addon__.getAddonInfo('path'))
+__cwd__ = xbmcvfs.translatePath(__addon__.getAddonInfo('path'))
 
 class Setting:
     def __init__(self):
