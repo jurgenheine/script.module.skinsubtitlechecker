@@ -1,5 +1,5 @@
 import xbmcaddon
-import xbmc
+import xbmcvfs
 
 from skinsubtitlekodi import get_kodi_setting
 from skinsubtitlenotificationmethod import NotificationMethod
